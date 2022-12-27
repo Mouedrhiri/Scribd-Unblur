@@ -1,42 +1,29 @@
 // ==UserScript==
-// @name         Scribd Unblur - Ouedrhiri
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Removes the popups and unblurs the text <3
-// @author       Mohammed Ouedrhiri
-// @match        http*://*.scribd.com/*
-// @grant        none
+// @id             Scribd.com Unblurer
+// @name           Scribd.com Unblurer
+// @namespace      com.scribd.unblurer
+// @version        1.0
+// @author         Mohammed OUEDRHIRI
+// @description    Unblur Scribd.com document pages
+// @include        http*://*.scribd.com/*
+// @run-at         document-end
+// @require        http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js
+// @homepageURL    https://github.com/ayltai/Hack-Scribd-Unblurer
+// @iconURL        http://www.scribd.com/favicon.ico
+// @supportURL     https://github.com/ayltai/Hack-Scribd-Unblurer
+// @updateURL      https://github.com/ayltai/Hack-Scribd-Unblurer/blob/master/scribdcomunblurer.meta.js
+// @downloadURL    https://github.com/ayltai/Hack-Scribd-Unblurer/blob/master/scribdcomunblurer.user.js
 // ==/UserScript==
-
-(function () {
-  "use strict";
-  setInterval(function () {
-    var elements = document.getElementsByClassName(
-      "auto__doc_page_webpack_doc_page_blur_promo"
-    );
-    while (elements.length > 0) {
-      elements[0].parentNode.removeChild(elements[0]);
-    }
-    var elements1 = document.getElementsByClassName("promo");
-    while (elements1.length > 0) {
-      elements1[0].parentNode.removeChild(elements1[0]);
-    }
-    var all = document.getElementsByClassName("a");
-    for (var i = 0; i < all.length; i++) {
-      all[i].style.color = "black";
-    }
-    var allL = document.getElementsByClassName("l");
-    for (i = 0; i < allL.length; i++) {
-      allL[i].style.color = "black";
-    }
-    var allImg = document.getElementsByClassName("absimg");
-    for (i = 0; i < allImg.length; i++) {
-      allImg[i].style.opacity = 1;
-    }
-
-    var list = document.getElementsByClassName("text_layer");
-    for (let item of list) {
-      item.style.textShadow = "";
-    }
-  }, 1000);
-})();
+setInterval(function() {
+    $('.page-blur-promo-overlay').remove();
+    $('.page_missing_explanation_inner').remove();
+    $('.autogen_class_views_read2_page_blur_promo').remove();
+    $('.outer_page only_ie6_border blurred_page').remove();
+    $('.promo_content_wrapper').remove();
+    $('.page-blur-promo').removeClass('page-blur-promo');
+     $('.page_blur_promo').remove();
+    $('.absimg').css('opacity', '1.0');
+    $('.text_layer').css('color', '#000');
+    $('.text_layer').css('text-shadow', '0px 0px 0px #000');
+    $('.autogen_class_views_pdfs_page_blur_promo').css('display','none');
+}, 1000);
